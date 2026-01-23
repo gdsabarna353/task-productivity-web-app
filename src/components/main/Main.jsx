@@ -1,7 +1,17 @@
 import React from 'react'
 
-export const Main = () => {
+export const Main = (props) => {
+
   return (
-    <div>This is Main</div>
+    <div className='main'>
+      <h1>List of Tasks:</h1>
+      <div>
+        <ol>
+          {props.tasks.map((item) => (
+            <li>{item.title} | {item.completed ? "Completed" : "Not Completed"}</li>
+          ))}
+        </ol>
+      </div>
+    </div>
   )
 }
