@@ -31,3 +31,8 @@
 .main{
   margin-left: 2vw;
 }
+.task{
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 1rem;
+}

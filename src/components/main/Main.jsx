@@ -7,8 +7,11 @@ export const Main = (props) => {
       <h1>List of Tasks:</h1>
       <div>
         <ol>
-          {props.tasks.map((item) => (
-            <li>{item.title} | {item.completed ? "Completed" : "Not Completed"}</li>
+          {props.tasks && props.tasks.map((item, index) => (
+            <li className='task' key={index}>
+              <span>{item.title} | {item.completed ? "Completed" : "Not Completed"}</span>
+              <button onClick={()=> props.toggleTask(index)}>Toggle</button>
+            </li>
           ))}
         </ol>
       </div>
