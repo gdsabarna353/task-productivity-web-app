@@ -1,4 +1,5 @@
 import React from 'react'
+import { TaskItem } from './TaskItem'
 
 export const Main = (props) => {
 
@@ -9,8 +10,7 @@ export const Main = (props) => {
         <ol>
           {props.tasks && props.tasks.map((item, index) => (
             <li className='task' key={index}>
-              <span>{item.title} | {item.completed ? "Completed" : "Not Completed"}</span>
-              <button onClick={()=> props.toggleTask(index)}>Toggle</button>
+              <TaskItem index={index} item={item} toggleTask={props.toggleTask}/>
             </li>
           ))}
         </ol>
