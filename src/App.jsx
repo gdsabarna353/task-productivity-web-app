@@ -65,11 +65,18 @@ const App = () => {
     setTasks(newTasks);
   }
 
+  const addTask = (title) => {
+    setTasks([...tasks, {
+      title: title,
+      completed: false
+    }]);
+  }
+
   return (
     <div className='app'>
       <div className='right'>
         <Header />
-        <Main tasks={tasks} toggleTask={onToggleTask}/>
+        <Main tasks={tasks} toggleTask={onToggleTask} addTask={addTask}/>
       </div>
       <div className='left'>
         <Sidebar />
