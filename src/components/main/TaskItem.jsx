@@ -6,9 +6,10 @@ export const TaskItem = (props) => {
         <>
             <span id="taskTitle">
                 <span className={props.item.completed ? 'line-strike' : ''}>{props.item.title}</span>
-                | {props.item.completed ? "Completed" : "Not Completed"}
+                {" "}| {props.item.completed ? "Completed" : "Not Completed"}
             </span>
-            <button onClick={() => props.toggleTask(props.index)}>Toggle</button>
+            <button onClick={() => props.toggleTask(props.taskId)}>Toggle</button>
+            <button className='danger' onClick={()=> props.deleteTask(props.taskId)}>Delete</button>
         </>
     )
 }

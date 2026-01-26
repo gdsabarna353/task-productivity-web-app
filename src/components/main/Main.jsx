@@ -15,7 +15,7 @@ export const Main = (props) => {
           onChange={(e) => setNewTaskTitle(e.target.value)}
         />
         <button onClick={() => {
-          props.addTask(newTaskTitle);
+          props.onAddTask(newTaskTitle);
           setNewTaskTitle("")
         }
         }>Add Task</button>
@@ -23,9 +23,9 @@ export const Main = (props) => {
       <h1>List of Tasks:</h1>
       <div>
         <ol>
-          {props.tasks && props.tasks.map((item, index) => (
-            <li className='task' key={index}>
-              <TaskItem index={index} item={item} toggleTask={props.toggleTask} />
+          {props.tasks && props.tasks.map((item) => (
+            <li className='task' key={item.id}>
+              <TaskItem taskId={item.id} item={item} toggleTask={props.onToggleTask} deleteTask={props.onDeleteTask}/>
             </li>
           ))}
         </ol>
