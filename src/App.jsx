@@ -55,11 +55,10 @@ const App = () => {
       title: "Complete the dinner",
       completed: false
     }
+
   ]);
 
-  
-
-  const onToggleTask = (selectedId) => {
+  const onToggle = (selectedId) => {
     const newTasks = tasks.map((item)=> {
       if (selectedId === item.id){
         return {...item, completed: !item.completed}
@@ -68,34 +67,26 @@ const App = () => {
         return {...item}
       }
     });
-
-    // console.log(newTasks);
     setTasks(newTasks);
   }
 
-  const onAddTask = (title) => {
-    if(title.trim().length === 0){
-      window.alert("Please provide a valid title for adding a task!!")
-    }
-    else{
+  const onAdd = (title) => {
       setTasks([...tasks, {
         id: Date.now(),
         title: title.trim(),
         completed: false
       }]);
-    }
   }
 
-  const onDeleteTask = (selectedId) => {
+  const onDelete = (selectedId) => {
     setTasks(tasks.filter((item) => selectedId !== item.id))
   }
-
 
   return (
     <div className='app'>
       <div className='right'>
         <Header />
-        <Main tasks={tasks} onToggleTask={onToggleTask} onAddTask={onAddTask} onDeleteTask={onDeleteTask}/>
+        <Main tasks={tasks} onToggle={onToggle} onAdd={onAdd} onDelete={onDelete}/>
       </div>
       <div className='left'>
         <Sidebar />

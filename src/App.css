@@ -9,7 +9,6 @@
   height: auto;
   display: flex;
   justify-content: flex-start;
-  /* border: 2px solid red; */
 }
 .left{
   width: 30%;
@@ -29,12 +28,24 @@
   align-items: flex-start;
 }
 .main{
-  margin-left: 2vw;
+  margin-top: 1vw;
+  width: 100%;
+  padding: 0 2vw;
+}
+.task-section{
+  margin-top: 1vw;
+  border: 1px solid #f1f1f1;
+  height: 60vh;
+  overflow: auto;
 }
 .task{
   display: flex;
-  gap: 2rem;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1vh;
   margin-bottom: 1rem;
+  border-bottom: 1px solid #f1f1f1;
 }
 .line-strike{
   text-decoration: line-through;
@@ -42,9 +53,61 @@
 .task-form{
   display: flex;
   gap: 2rem;
-  margin: 2vh;
+  margin: 2vh 0;
 }
-.danger{
+.primary-btn{
+  color: blue;
+  background-color: #fff;
+  border: 2px solid blue;
+}
+.primary-btn:hover{
+  color: #fff;
+  background-color: blue;
+}
+.danger-btn{
+  color: red;
+  background-color: #fff;
+  border: 2px solid red;
+}
+.danger-btn:hover{
   color: #fff;
   background-color: red;
+}
+.primary{
+  color: blue;
+}
+.success{
+  color: green;
+}
+.warning{
+  color: rgb(255, 174, 0);
+}
+.task-count{
+  display: flex;
+  justify-content: space-between;
+  margin: 2vh 0;
+  font-size: 1.5rem;
+  color: green;
+}
+.btn-group{
+  display: flex;
+  width: auto;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1vw;
+}
+.btn{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  border-radius: 10%;
+}
+.btn:hover{
+  cursor: pointer;
+  font-weight: bold;
+}
+.disabled{
+  opacity: 0.5;
+  cursor: not-allowed !important;
 }
