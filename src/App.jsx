@@ -58,7 +58,11 @@ const App = () => {
 
   ]);
 
-  const onToggle = (selectedId) => {
+  const totalTasks = tasks.length
+  const completedTasks = tasks.filter(task => task.completed).length
+  const pendingTasks = totalTasks - completedTasks
+
+  const handleToggleTask = (selectedId) => {
     const newTasks = tasks.map((item)=> {
       if (selectedId === item.id){
         return {...item, completed: !item.completed}
@@ -70,7 +74,7 @@ const App = () => {
     setTasks(newTasks);
   }
 
-  const onAdd = (title) => {
+  const handleAddTask = (title) => {
       setTasks([...tasks, {
         id: Date.now(),
         title: title.trim(),
@@ -78,7 +82,7 @@ const App = () => {
       }]);
   }
 
-  const onDelete = (selectedId) => {
+  const handleDeleteTask = (selectedId) => {
     setTasks(tasks.filter((item) => selectedId !== item.id))
   }
 
@@ -86,7 +90,15 @@ const App = () => {
     <div className='app'>
       <div className='right'>
         <Header />
-        <Main tasks={tasks} onToggle={onToggle} onAdd={onAdd} onDelete={onDelete}/>
+        <Main 
+          tasks={tasks} 
+          handleToggleTask={handleToggleTask} 
+          handleAddTask={handleAddTask} 
+          handleDeleteTask={handleDeleteTask}
+          totalTasks={totalTasks}
+          completedTasks={completedTasks}
+          pendingTasks={pendingTasks}
+        />
       </div>
       <div className='left'>
         <Sidebar />

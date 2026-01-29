@@ -5,10 +5,6 @@ export const Main = (props) => {
 
   const [newTaskTitle, setNewTaskTitle] = useState("");
 
-  const totalTasks = props.tasks.length
-  const completedTasks = props.tasks.filter(task => task.completed).length
-  const pendingTasks = totalTasks - completedTasks
-
   return (
     <div className='main'>
       <div className='task-form'>
@@ -21,23 +17,23 @@ export const Main = (props) => {
         <button
           className= {newTaskTitle.trim().length === 0 ? 'btn primary-btn disabled' : 'btn primary-btn'}
           onClick={() => {
-            props.onAdd(newTaskTitle);
+            props.handleAddTask(newTaskTitle);
             setNewTaskTitle("")
           }}
           disabled={newTaskTitle.trim().length === 0}
         >Add Task</button>
       </div>
       <div className='task-count'>
-        <h5 className='primary'>Total tasks: {totalTasks}</h5>
-        <h5 className='success'>Completed tasks: {completedTasks}</h5>
-        <h5 className='warning'>Pending tasks: {pendingTasks}</h5>
+        <h5 className='primary'>Total tasks: {props.totalTasks}</h5>
+        <h5 className='success'>Completed tasks: {props.completedTasks}</h5>
+        <h5 className='warning'>Pending tasks: {props.pendingTasks}</h5>
       </div>
       <h1>List of Tasks:</h1>
       <div>
         <ol className='task-section'>
           {props.tasks && props.tasks.map((item) => (
             <li className='task' key={item.id}>
-              <TaskItem taskId={item.id} item={item} onToggle={props.onToggle} onDelete={props.onDelete}/>
+              <TaskItem taskId={item.id} item={item} handleToggleTask={props.handleToggleTask} handleDeleteTask={props.handleDeleteTask}/>
             </li>
           ))}
         </ol>

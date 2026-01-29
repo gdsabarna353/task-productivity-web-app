@@ -9,8 +9,8 @@ export const TaskItem = (props) => {
                 {" "}| {props.item.completed ? "Completed" : "Not Completed"}
             </div>
             <div className="btn-group">
-                <button className='btn primary-btn' onClick={() => props.onToggle(props.taskId)}>Toggle</button>
-                <button className='btn danger-btn' onClick={()=> props.onDelete(props.taskId)}>Delete</button>
+                <button className='btn primary-btn' onClick={() => props.handleToggleTask(props.taskId)}>Toggle</button>
+                <button className='btn danger-btn' onClick={()=> props.handleDeleteTask(props.taskId)}>Delete</button>
             </div>
         </>
     )
