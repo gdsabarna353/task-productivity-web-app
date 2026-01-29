@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { TaskItem } from './TaskItem'
+import { TaskList } from './TaskList';
 
 export const Main = (props) => {
 
@@ -15,7 +15,7 @@ export const Main = (props) => {
           onChange={(e) => setNewTaskTitle(e.target.value)}
         />
         <button
-          className= {newTaskTitle.trim().length === 0 ? 'btn primary-btn disabled' : 'btn primary-btn'}
+          className={newTaskTitle.trim().length === 0 ? 'btn primary-btn disabled' : 'btn primary-btn'}
           onClick={() => {
             props.handleAddTask(newTaskTitle);
             setNewTaskTitle("")
@@ -30,13 +30,7 @@ export const Main = (props) => {
       </div>
       <h1>List of Tasks:</h1>
       <div>
-        <ol className='task-section'>
-          {props.tasks && props.tasks.map((item) => (
-            <li className='task' key={item.id}>
-              <TaskItem taskId={item.id} item={item} handleToggleTask={props.handleToggleTask} handleDeleteTask={props.handleDeleteTask}/>
-            </li>
-          ))}
-        </ol>
+        <TaskList tasks={props.tasks} handleToggleTask={props.handleToggleTask} handleDeleteTask={props.handleDeleteTask} />
       </div>
     </div>
   )
